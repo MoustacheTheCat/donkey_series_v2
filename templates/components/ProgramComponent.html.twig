@@ -1,0 +1,9 @@
+<div class="card home-card m-3" style="width: 18rem;">
+  <div class="d-flex align-items-center" style="height:360px">
+      <img src="{{this.program.poster}}" alt="{{ this.program.title }} poster" class="card-img-top" >
+  </div>
+  <div class="card-body text-center m-3">
+      <a href="{{ path('app_program_show', {'program_slug': this.program.slug} ) }}" class="btn btn-card-home">{{ this.program.title }}</a>
+  </div>
+</div>
+

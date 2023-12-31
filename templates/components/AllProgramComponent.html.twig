@@ -1,0 +1,17 @@
+{% if this.AllProgram is empty %}
+    <h3>Aucune série trouvée.</h3>
+{% else %}
+    {% for program in this.AllProgram %}
+    <div class="col m-3 d-flex justify-content-center">
+        <div class="card h-100 text-center card-index cards-lists">
+            <img src="{{program.poster}}" alt="Avatar" class="image">
+            <div class="middle card-body text-center">
+                <a href="{{path('app_program_show', {'program_slug': program.slug})}}" class="card-text text">
+                    <h5 class="card-title title">{{ program.title }}</h5>
+                    <p class="summary">{{ program.summary }}</p>
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+{% endif %}

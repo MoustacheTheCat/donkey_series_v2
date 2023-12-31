@@ -1,0 +1,35 @@
+<div {{ attributes }} class="m-4">
+    <div class="row m-5">
+        <div class="col-12 d-flex justify-content-center">
+            <input type="search" data-model="query" placeholder="Rechercher un serie, un film, un episode..." >
+        </div>
+    </div>
+    {% set arrayCategory = [] %}
+    <div class="row d-flex justify-content-center align-items-stretch flex-row flex-wrap align-self-stretch my-5">
+    {% if this.query != null %}
+        {% for program in this.categories %}
+            {% if program.programs is not empty %}
+                {% set title = program.programs.get(0).title%}
+                {% if program.programs.get(0).title not in arrayCategory %}
+                    {% set arrayCategory = arrayCategory|merge([title]) %}
+                    <div class="col m-3 d-flex justify-content-center">
+                        <div class="card h-100 text-center card-index cards-lists">
+                            <img src="{{program.programs.get(0).poster}}" alt="Avatar" class="image">
+                            <div class="middle card-body text-center">
+                                <a href="{{path('app_program_show', {'program_slug': program.programs.get(0).slug})}}" class="card-text text">
+                                    <h5 class="card-title title">{{ program.programs.get(0).title }}</h5>
+                                    <p class="summary">{{ program.programs.get(0).summary }}</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    {% elseif this.categories is empty %}
+            <h3>Aucun résultat</h3>
+    {% else %}
+        {{ component('AllProgramComponent') }}
+    {% endif %}
+    </div>
+</div>

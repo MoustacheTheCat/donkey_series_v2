@@ -1,0 +1,28 @@
+ {% set myArrayTitle = [] %}
+    {# {% if query == null %}
+        {% for program in this.programs %}
+            {{program.title}}
+        {% endfor %}
+    {% else %}
+        {% for program in this.programs %}
+            {{program.title}}
+        {% endfor %}
+        {% for actor in this.actors %} 
+            {{actor.programs.get(0).title}}
+        {% endfor %}
+        {% for category in this.categories %}
+            {% if category.programs.get(0) != null %}
+            
+                {{category.programs.get(0).title}}
+            {% endif %}
+        {% endfor %}
+   {% endif %} #}
+ 
+   {% for elment in this.diplayResultSearch %}
+        {% if elment.title is defined  %}
+            {{dump(elment.title)}}
+        {% elseif elment.programs.get(0).title is defined %}
+            {{dump(elment.programs.get(0).title)}}
+        {% endif %}  
+    {% endfor %}
+    

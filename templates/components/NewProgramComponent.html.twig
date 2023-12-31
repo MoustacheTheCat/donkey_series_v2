@@ -1,0 +1,8 @@
+
+{% if this.newProgram is empty %}
+    <p>No new programs</p>
+{% else %}
+    {% for program in this.newProgram %}
+        {{ component('ProgramComponent', {'id': program.id}) }}
+    {% endfor %}
+{% endif %}

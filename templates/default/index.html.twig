@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{page_title}} - Donkey Series{% endblock %}
+
+{% block body %}
+
+
+
+    <div class="bg-image-home mt-5 pt-5"></div>
+    <div class="m-5 p-5 div-citation">
+        <h3 class="text-center">"Dans le cinéma, ce n'est pas la réalité qui compte, mais ce que l'imagination peut en faire."</h3>
+        <h3 class="text-end">François Truffaut</h3>
+    </div>
+    <div>
+    <div class="row m-5">
+        <div class="col-12">
+            <h2 class="text-center home-sub-title">Les derniers films ajoutés</h2>
+        </div>
+    </div>
+    <div class="row d-flex justify-content-around align-items-stretch flex-row flex-wrap align-self-stretch mb-5">
+        {{ component('NewProgramComponent')}}
+    </div>
+    
+    {# <a href="{{path('app_category_shows')}}">Liste des Catetegories</a> #}
+
+
+{% endblock %}

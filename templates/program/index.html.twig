@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{page_title}} Donkey Series{% endblock %}
+
+{% block body %}
+
+
+<div class="container-fluid pt-5">
+    <div class="row m-5">
+        <div class="col-12">
+            <h1 class="text-center">{{page_title}}</h1>
+        </div>
+    </div>
+    {# <div class="row d-flex justify-content-center align-items-stretch flex-row flex-wrap align-self-stretch my-5">
+        {{ component('AllProgramComponent')}}
+    </div> #}
+    {{ component('CategorySearchComponent') }}
+</div>
+{% endblock %}
+
