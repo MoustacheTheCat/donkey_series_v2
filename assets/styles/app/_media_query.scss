@@ -1,0 +1,126 @@
+@include media-breakpoint-down(md) {
+    .bg-image-home {
+        height: 50vh;
+    }
+
+    body {
+        font-size: var(--bs-body-font-size-sm);
+    }
+
+    h1 {
+        font-size: var(--bs-body-font-size-h1-sm);
+    }
+
+    h2 {
+        font-size: var(--bs-body-font-size-h2-sm);
+    }
+
+    h3 {
+        font-size: var(--bs-body-font-size-h3-sm);
+    }
+
+    h4 {
+        font-size: var(--bs-body-font-size-h4-sm);
+    }
+
+    h5 {
+        font-size: var(--bs-body-font-size-h5-sm);
+    }
+
+    h6 {
+        font-size: var(--bs-body-font-size-h6-sm);
+    }
+
+    p {
+        font-size: var(--bs-body-font-size-p-sm);
+    }
+
+    a {
+        font-size: var(--bs-body-font-size-a-sm);
+    }
+
+}
+
+@include media-breakpoint-between(md, xl) {
+    .bg-image-home {
+        height: 80vh;
+    }
+
+    body {
+        font-size: var(--bs-body-font-size-md);
+    }
+
+    h1 {
+        font-size: var(--bs-body-font-size-h1-md);
+    }
+
+    h2 {
+        font-size: var(--bs-body-font-size-h2-md);
+    }
+
+    h3 {
+        font-size: var(--bs-body-font-size-h3-md);
+    }
+
+    h4 {
+        font-size: var(--bs-body-font-size-h4-md);
+    }
+
+    h5 {
+        font-size: var(--bs-body-font-size-h5-md);
+    }
+
+    h6 {
+        font-size: var(--bs-body-font-size-h6-md);
+    }
+
+    p {
+        font-size: var(--bs-body-font-size-p-md);
+    }
+
+    a {
+        font-size: var(--bs-body-font-size-a-md);
+    }
+}
+
+@include media-breakpoint-up(xl) {
+    .bg-image-home {
+        height: 100vh;
+    }
+
+    body {
+        font-size: var(--bs-body-font-size-lg);
+    }
+
+    h1 {
+        font-size: var(--bs-body-font-size-h1-lg);
+    }
+
+    h2 {
+        font-size: var(--bs-body-font-size-h2-lg);
+    }
+
+    h3 {
+        font-size: var(--bs-body-font-size-h3-lg);
+    }
+
+    h4 {
+        font-size: var(--bs-body-font-size-h4-lg);
+    }
+
+    h5 {
+        font-size: var(--bs-body-font-size-h5-lg);
+    }
+
+    h6 {
+        font-size: var(--bs-body-font-size-h6-lg);
+    }
+
+    p {
+        font-size: var(--bs-body-font-size-p-lg);
+    }
+
+    a {
+        font-size: var(--bs-body-font-size-a-lg);
+    }
+}

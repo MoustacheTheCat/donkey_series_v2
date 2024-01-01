@@ -1,0 +1,18 @@
+.footer-link,
+.footer-info {
+    color: var(--bs-light)
+}
+
+.footer-link {
+    margin: 1rem;
+    text-decoration: none;
+}
+
+.footer-link:hover {
+    text-decoration: none;
+    color: var(--bs-dark) !important;
+}
+
+footer p {
+    color: var(--bs-primary) !important;
+}

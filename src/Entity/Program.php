@@ -47,10 +47,13 @@ class Program
     #[Assert\NotBlank()]
     private ?string $slug = null;
 
+   
+   
     public function __construct()
     {
         $this->seasons = new ArrayCollection();
         $this->actors = new ArrayCollection();
+        $this->programs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -171,6 +174,38 @@ class Program
     public function setSlug(string $slug): static
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    
+
+    /**
+     * @return Collection<int, self>
+     */
+    public function getPrograms(): Collection
+    {
+        return $this->programs;
+    }
+
+    public function addProgram(self $program): static
+    {
+        if (!$this->programs->contains($program)) {
+            $this->programs->add($program);
+            $program->setChoise($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProgram(self $program): static
+    {
+        if ($this->programs->removeElement($program)) {
+            // set the owning side to null (unless already changed)
+            if ($program->getChoise() === $this) {
+                $program->setChoise(null);
+            }
+        }
 
         return $this;
     }

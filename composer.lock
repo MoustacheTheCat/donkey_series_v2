@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bb7f39e1d4d0cb711b4359e5372d8c62",
+    "content-hash": "77e9f223f2a95ae939d01077495f64ff",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -1719,6 +1719,53 @@
                 }
             ],
             "time": "2023-10-27T15:32:31+00:00"
+        },
+        {
+            "name": "orchidjs/tom-select",
+            "version": "v2.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/orchidjs/tom-select.git",
+                "reference": "69180fa9e79060060f1824fbde85537579d0005d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/orchidjs/tom-select/zipball/69180fa9e79060060f1824fbde85537579d0005d",
+                "reference": "69180fa9e79060060f1824fbde85537579d0005d",
+                "shasum": ""
+            },
+            "type": "component",
+            "extra": {
+                "component": {
+                    "scripts": [
+                        "dist/js/tom-select.complete.min.js"
+                    ],
+                    "styles": [
+                        "dist/css/tom-select.default.min.css"
+                    ],
+                    "files": [
+                        "dist/js/tom-select.complete.min.js",
+                        "dist/css/tom-select.default.min.css"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "Tom Select is a dynamic, framework agnostic, and lightweight (~16kb gzipped) <select> UI control. With autocomplete and native-feeling keyboard navigation, it's useful for tagging, contact lists, country selectors, and so on.",
+            "homepage": "https://tom-select.js.org/",
+            "support": {
+                "issues": "https://github.com/orchidjs/tom-select/issues",
+                "source": "https://github.com/orchidjs/tom-select/tree/v2.3.1"
+            },
+            "funding": [
+                {
+                    "url": "https://opencollective.com/tom-select",
+                    "type": "open_collective"
+                }
+            ],
+            "time": "2023-11-03T02:34:52+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",

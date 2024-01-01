@@ -22,6 +22,7 @@ class ProgramType extends AbstractType
             ->add('category', EntityType::class, [
                 'class' => Category::class,
                 'choice_label' => 'name',
+                'autocomplete' => true,
             ])
             ->add('actors', EntityType::class, [
                 'class' => Actor::class,
@@ -29,6 +30,7 @@ class ProgramType extends AbstractType
                 'multiple' => true,
                 'expanded' => true,
             ])
+            
         ;
     }
 

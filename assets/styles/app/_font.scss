@@ -1,0 +1,43 @@
+
+
+
+@font-face {
+    font-family: 'IndieFlower';
+    font-weight: normal;
+    font-style: normal;
+    src:
+    local('IndieFlower'),
+    local('IndieFlower-Regular'), 
+    url('../font/IndieFlower.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Tillana';
+    font-weight: 500;
+    font-style: normal;
+    src:
+    local('Tillana Regular'),
+    local('Tillana-Regular'),
+    url('../font/Tillana-Medium.ttf') format('truetype'); 
+    
+}
+
+@font-face {
+    font-family: 'Titillium Web';
+    font-weight: 700; 
+    font-style: normal;
+    src:
+    local('TitilliumWeb-Bold'),
+    local('Titillium Web Bold'), 
+    url('../font/TitilliumWeb-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Changa';
+    font-weight: 700; 
+    font-style: normal;
+    src:
+    local('Changa-Bold'),
+    local('Changa Bold'), 
+    url('../font/Changa-Bold.ttf') format('truetype'); 
+}
