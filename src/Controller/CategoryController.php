@@ -14,7 +14,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Cocur\Slugify\Slugify;
 
 #[Route('/category', name: 'app_category')]
 class CategoryController extends AbstractController
@@ -32,8 +31,6 @@ class CategoryController extends AbstractController
     public function new(Request $request, EntityManagerInterface $em): Response
     {
         $category = new Category();
-        $slugify = new Slugify();
-        $category->setSlug($slugify->slugify($category->getName()));
         $form = $this->createForm(CategoryType::class,$category) ;
         $form->add('submit',SubmitType::class,[
             'label' => 'Add category',

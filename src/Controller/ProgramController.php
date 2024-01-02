@@ -45,8 +45,6 @@ class ProgramController extends AbstractController
     public function new(Request $request, EntityManagerInterface $em): Response
     {
         $program = new Program();
-        // $slugify = new Slugify();
-        // $program->setSlug($slugify->slugify($program->getTitle()));
         $form = $this->createForm(ProgramType::class) ;
         $form->add('submit',SubmitType::class,[
             'label' => 'Add Program',
@@ -74,8 +72,6 @@ class ProgramController extends AbstractController
         #[MapEntity(mapping: ['program_slug' => 'slug'])] Program $program
         ): Response
     {
-        $slugify = new Slugify();
-        $program->setSlug($slugify->slugify($program->getTitle()));
         $form = $this->createForm(ProgramType::class,$program) ;
         $form->add('submit',SubmitType::class,[
             'label' => 'Edit Program',

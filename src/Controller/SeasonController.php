@@ -31,8 +31,6 @@ class SeasonController extends AbstractController
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $season = new Season();
-        $slugify = new Slugify();
-        $season->setSlug($slugify->slugify($season->getName()));
         $form = $this->createForm(SeasonType::class, $season);
         $form->add('submit',SubmitType::class,[
             'label' => 'Add Season',
@@ -70,8 +68,6 @@ class SeasonController extends AbstractController
         EntityManagerInterface $entityManager
         ): Response
     {
-        $slugify = new Slugify();
-        $season->setSlug($slugify->slugify($season->getName()));
         $form = $this->createForm(SeasonType::class, $season);
         $form->add('submit',SubmitType::class,[
             'label' => 'Edit Season',

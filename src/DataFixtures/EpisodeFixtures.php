@@ -6,7 +6,6 @@ use App\Entity\Episode;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
-use Cocur\Slugify\Slugify;
 
 class EpisodeFixtures extends Fixture implements DependentFixtureInterface
 {
@@ -581,15 +580,13 @@ class EpisodeFixtures extends Fixture implements DependentFixtureInterface
                 ],
             ],
         ];
-        $slugify = new Slugify();
         foreach ($seasonsData as $seasonReference => $seasonData) {
             $season = $this->getReference($seasonReference);
             foreach ($seasonData['episodes'] as $episodeData) {
                 $episode = new Episode();
+                $episode->setTitle($episodeData['title']);
                 $episode->setSeason($season);
                 $episode->setNumber($episodeData['number']);
-                $episode->setTitle($episodeData['title']);
-                $episode->setSlug($slugify->slugify($episodeData['title']));
                 $episode->setSynopsis($episodeData['synopsis']);
 
                 $manager->persist($episode);

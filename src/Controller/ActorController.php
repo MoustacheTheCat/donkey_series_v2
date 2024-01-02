@@ -15,7 +15,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Cocur\Slugify\Slugify; 
 
 #[Route('/actor')]
 class ActorController extends AbstractController
@@ -31,9 +30,7 @@ class ActorController extends AbstractController
     #[Route('/new', name: 'app_actor_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
-        $slugify = new Slugify();
         $actor = new Actor();
-        $actor->setSlug($slugify->slugify($actor->getName()));
         $form = $this->createForm(ActorType::class, $actor);
         $form->add('submit',SubmitType::class,[
             'label' => 'Add Actor',
@@ -71,8 +68,6 @@ class ActorController extends AbstractController
     #[Route('/{actor_slug}/edit', name: 'app_actor_edit', methods: ['GET', 'POST'],requirements: ['actor_slug' => '[a-z\-]+'])]
     public function edit(Request $request, Actor $actor, EntityManagerInterface $entityManager): Response
     {
-        $slugify = new Slugify();
-        $actor->setSlug($slugify->slugify($actor->getName()));
         $form = $this->createForm(ActorType::class, $actor);
         $form->add('submit',SubmitType::class,[
             'label' => 'Edit Actor',

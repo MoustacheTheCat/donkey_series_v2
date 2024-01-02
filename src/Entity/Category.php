@@ -7,10 +7,16 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\DBAL\Types\Types;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
 class Category
 {
+
+    use TimestampableEntity;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -24,8 +30,9 @@ class Category
     #[ORM\OneToMany(mappedBy: 'category', targetEntity: Program::class, orphanRemoval: true)]
     private Collection $programs;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, unique: true)]
     #[Assert\NotBlank()]
+    #[Gedmo\Slug(fields: ['name'], updatable: false)]
     private ?string $slug = null;
 
     public function __construct()
@@ -48,6 +55,11 @@ class Category
         $this->name = $name;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getName();
     }
 
     /**

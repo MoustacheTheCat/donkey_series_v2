@@ -3,13 +3,21 @@
 namespace App\Entity;
 
 use App\Repository\ActorRepository;
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\DBAL\Types\Types;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 #[ORM\Entity(repositoryClass: ActorRepository::class)]
 class Actor
 {
+
+    use TimestampableEntity;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -21,7 +29,9 @@ class Actor
     #[ORM\ManyToMany(targetEntity: Program::class, inversedBy: 'actors')]
     private Collection $programs;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, unique: true)]
+    #[Assert\NotBlank()]
+    #[Gedmo\Slug(fields: ['name'], updatable: false)]
     private ?string $slug = null;
 
     public function __construct()
@@ -84,6 +94,11 @@ class Actor
         $this->slug = $slug;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getName();
     }
 }
 

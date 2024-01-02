@@ -3,14 +3,22 @@
 namespace App\Entity;
 
 use App\Repository\SeasonRepository;
+
+use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\DBAL\Types\Types;
-use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
+use Gedmo\Mapping\Annotation as Gedmo;
+
 
 #[ORM\Entity(repositoryClass: SeasonRepository::class)]
 class Season
 {
+
+    use TimestampableEntity;
+    
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -39,8 +47,9 @@ class Season
     #[Assert\NotBlank()]
     private ?string $name = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, unique: true)]
     #[Assert\NotBlank()]
+    #[Gedmo\Slug(fields: ['name'], updatable: false)]
     private ?string $slug = null;
 
     public function __construct()
@@ -101,6 +110,8 @@ class Season
         return $this;
     }
 
+    
+
     /**
      * @return Collection<int, Episode>
      */
@@ -133,27 +144,32 @@ class Season
 
 
 
-public function getName(): ?string
-{
-    return $this->name;
-}
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
 
-public function setName(string $name): static
-{
-    $this->name = $name;
+    public function setName(string $name): static
+    {
+        $this->name = $name;
 
-    return $this;
-}
+        return $this;
+    }
 
-public function getSlug(): ?string
-{
-    return $this->slug;
-}
+    public function __toString()
+    {
+        return $this->getName();
+    }
 
-public function setSlug(string $slug): static
-{
-    $this->slug = $slug;
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
 
-    return $this;
-}
+    public function setSlug(string $slug): static
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
 }

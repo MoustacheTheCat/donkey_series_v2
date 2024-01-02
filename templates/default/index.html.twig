@@ -21,7 +21,13 @@
         {{ component('NewProgramComponent')}}
     </div>
     
-    {# <a href="{{path('app_category_shows')}}">Liste des Catetegories</a> #}
-
+    {% for i in 1..5 %}
+    <div {{ stimulus_controller('faq') }}>
+    <h2 {{ stimulus_action('faq', 'toggle', 'click') }}>Titre de la question {{ i }}</h2>
+        <div {{ stimulus_target('faq', 'answer') }} style="display:none">
+            lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisl eget  rhoncus luctus, mauris lorem sodales urna, nec fermentum velit nisl id nisl. Nul
+        </div>
+    </div>
+    {% endfor %}
 
 {% endblock %}

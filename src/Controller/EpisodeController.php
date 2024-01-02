@@ -31,8 +31,6 @@ class EpisodeController extends AbstractController
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $episode = new Episode();
-        $slugify = new Slugify();
-        $episode->setSlug($slugify->slugify($episode->getTitle()));
         $form = $this->createForm(EpisodeType::class, $episode);
         $form->add('submit',SubmitType::class,[
             'label' => 'Add Episode',
