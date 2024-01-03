@@ -1,0 +1,16 @@
+<div {{ attributes }} class="collapse navbar-collapse d-flex flex-column position-relative">
+    <div class="row m-5">
+        <div class="col-12 d-flex justify-content-center">
+            <input type="search" data-model="query" placeholder="Rechercher une série, un film, un épisode...">
+             {% if query != "" %}
+                <ul class="position-absolute text-white" style="top: 100%; left: 0;">
+                    {% for program in this.programs %}
+                        {{ dump(program.title)  }}
+                        <li><a href="{{ path('app_program_show', {'program_slug': program.slug}) }}">{{ program.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+</div>
+   

@@ -3,9 +3,12 @@
 namespace App\Repository;
 
 use App\Entity\Program;
+use App\Entity\Actor;
+use App\Entity\Category;
+
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
-
+use Doctrine\ORM\QueryBuilder;
 /**
  * @extends ServiceEntityRepository<Program>
  *
@@ -35,19 +38,29 @@ class ProgramRepository extends ServiceEntityRepository
         ;
     }
 
-    public function findByQuery($query): array
+    public function findByQuery($searchTerm): array
     {
-        if (empty($query)) {
+        if (empty($searchTerm)) {
             return $this->findAll();
         }
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.title LIKE :query')
-            ->setParameter('query', '%'.$query.'%')
+
+        $queryBuilder = $this->createQueryBuilder('p');
+
+        $query = $queryBuilder
+            ->select('p')
+            ->leftJoin('p.actors', 'a')
+            ->leftJoin('p.category', 'c')
+            ->orWhere('p.title LIKE :query Or a.name LIKE :query Or c.name LIKE :query' )
+            ->setParameter('query', '%' . $searchTerm . '%')
             ->orderBy('p.id', 'DESC')
-            ->getQuery()
-            ->getResult()
-        ;
+            ->getQuery();
+
+        $response = $query->getResult();
+        return $response;
     }
+
+
+     
 
     
 

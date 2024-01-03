@@ -3,15 +3,13 @@
 namespace App\Components;
 
 use App\Repository\ProgramRepository;
-use App\Repository\CategoryRepository;
-use App\Repository\ActorRepository;
 
 use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
 use Symfony\UX\LiveComponent\Attribute\LiveProp;
 use Symfony\UX\LiveComponent\DefaultActionTrait;
 
 #[AsLiveComponent]
-class ActorSearchComponent
+class HeaderSearchProgramComponenet
 {
     use DefaultActionTrait;
 
@@ -19,13 +17,16 @@ class ActorSearchComponent
     public string $query = '';
 
     public function __construct(
-            private ActorRepository $actorRepository
+        private ProgramRepository $programRepository
     ) {
     }
 
-    public function getActors(): array
+    public function getPrograms(): array
     {
-        return $this->actorRepository->findByQuery($this->query);
+        if (empty($this->query)) {
+            return $this->query;
+        }
+        return $this->programRepository->findByQuery($this->query);
     }
 
 }
