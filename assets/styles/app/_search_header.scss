@@ -1,0 +1,10 @@
+// .list-search-header{
+
+// }
+.result-search-header{
+    color: var(--bs-dark);
+}
+.list-search-header{
+    background-color: var(--bs-light) !important;
+    z-index: 6 ! important;
+}

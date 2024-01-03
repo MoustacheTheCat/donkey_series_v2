@@ -1,3 +1,6 @@
 .navbar-light .navbar-toggler-icon {
     background-image: var(--bs-navbar-toggler-icon-bg) !important;
 }
+header {
+    z-index: 1 !important;
+}
