@@ -11,10 +11,10 @@
             <div class="col m-3 d-flex justify-content-center">
                 <div class="card h-100 text-center card-index cards-lists">
                     <img src="{{program.poster}}" alt="Avatar" class="image">
-                    <div class="middle card-body text-center">
+                    <div class="middle card-body text-center" data-controller="summary">
                         <a href="{{path('app_program_show', {'program_slug': program.slug})}}" class="card-text text">
                             <h5 class="card-title title">{{ program.title }}</h5>
-                            <p class="summary">{{ program.summary }}</p>
+                            <p class="summary"  data-summary-target="summaryText" data-summary-text-outlet="text-summary">{{ program.summary }}</p>
                         </a>
                     </div>
                 </div>

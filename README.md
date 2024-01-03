@@ -87,3 +87,6 @@ Cocur/slugify
 lancer le serveur 
 
         symfony server:start -d
+
+
+        php bin/console cache:pool:clear --all

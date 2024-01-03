@@ -5,8 +5,7 @@ help:
 
 install: ## Install all the project
 	symfony composer install
-	npm install
-	npm run dev
+	php bin/console lexik:jwt:generate-keypair
 	symfony console d:d:c
 	make rebuild
 
@@ -15,3 +14,9 @@ rebuild: ## Rebuild the database
 	symfony console d:d:c
 	symfony console d:s:u -f
 	symfony console d:f:l -n
+
+
+scss-build:
+	php bin/console sass:build
+	php bin/console asset-map:compile
+	
